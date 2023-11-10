@@ -29,3 +29,23 @@
 ############### EXERCISE ###############
 ########################################
 
+# this solution seems to work on my IDE but isnt validated on Leetcode
+
+def majorityElement(nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    l = len(nums)
+    for i in range (0, l):
+        cpt = 1
+        for j in range (i + 1,l):
+            print(nums[j])
+            if nums[i] == nums[j]:
+                cpt += 1
+            if cpt >= l/2:
+                return nums[i]
+            
+nums = [2,3,2,3,4,3]
+result = majorityElement(nums)
+print(result)
