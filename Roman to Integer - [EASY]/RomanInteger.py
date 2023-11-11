@@ -1,3 +1,6 @@
+############ INSTRUCTIONS ##############
+########################################
+
 #Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 
 #Symbol       Value
@@ -41,3 +44,66 @@
 #1 <= s.length <= 15
 #s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 #It is guaranteed that s is a valid roman numeral in the range [1, 3999].
+
+############### EXERCISE ###############
+########################################
+
+def romanToInt(s):
+    """
+    :type s: str
+    :rtype: int
+    """
+    l = len(s)
+    cpt = 0
+    skip = False
+    for i in range (0,l):
+        print(s[i])
+        print("\n")
+        
+        if (skip):      # adding a skip line in case a double digit roman number is detected, as i cannot be manually incremented
+            skip = False 
+            continue
+
+        if (i < l - 1):
+            if ((s[i] == "I") and (s[i+1] == "V")):
+                cpt += 4
+                skip = True
+                continue
+
+            if ((s[i] == "I") and (s[i+1] == "X")):
+                cpt += 9
+                skip = True
+                continue
+
+            if ((s[i] == "X") and (s[i+1] == "L")):
+                cpt += 40
+                skip = True
+                continue
+
+            if ((s[i] == "X") and (s[i+1] == "C")):
+                cpt += 90
+                skip = True
+                continue
+            
+            if ((s[i] == "C") and (s[i+1] == "D")):
+                cpt += 400
+                skip = True
+                continue
+            
+            if ((s[i] == "C") and (s[i+1] == "M")):
+                print("test")
+                cpt += 900
+                skip = True
+                continue
+        
+        if (s[i] == "I"): cpt += 1
+        if (s[i] == "V"): cpt += 5
+        if (s[i] == "X"): cpt += 10
+        if (s[i] == "L"): cpt += 50
+        if (s[i] == "C"): cpt += 100
+        if (s[i] == "D"): cpt += 500
+        if (s[i] == "M"): cpt += 1000
+        
+    return cpt
+
+print(romanToInt("MCMXCIV"))
