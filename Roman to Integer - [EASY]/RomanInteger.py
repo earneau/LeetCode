@@ -57,9 +57,6 @@ def romanToInt(s):
     cpt = 0
     skip = False
     for i in range (0,l):
-        print(s[i])
-        print("\n")
-        
         if (skip):      # adding a skip line in case a double digit roman number is detected, as i cannot be manually incremented
             skip = False 
             continue
@@ -107,3 +104,32 @@ def romanToInt(s):
     return cpt
 
 print(romanToInt("MCMXCIV"))
+
+### SECOND VERSION ###
+
+def romanToIntV2(s: str) -> int:
+    values = {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000
+    }
+    
+    cpt = 0
+    l = len(s)
+    
+    for i in range(l):
+        if i < l - 1 and values[s[i]] < values[s[i+1]]:
+            cpt -= values[s[i]]             #if the following roman digit is higher than the current one, then we remove the current one
+        else:
+            cpt += values[s[i]]
+    
+    return cpt
+
+# the logic of removing a number if the next one is higher comes from the logic of roman numbers : IX = 9 because it's 10 - 1
+# we just need to look at it in a mirrored way, 9 is as well -1 + 10
+
+print(romanToIntV2("MCMXCIV"))
