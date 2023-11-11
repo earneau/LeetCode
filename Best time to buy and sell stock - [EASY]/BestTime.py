@@ -29,3 +29,20 @@
 
 ############### EXERCISE ###############
 ########################################
+
+def maxProfit(prices):
+    """
+    :type prices: List[int]
+    :rtype: int
+    """
+    profit = 0
+    for i in range (0, len(prices)):
+        buy = prices[i]
+        for j in range (i+1, len(prices)):
+            sell = prices[j]
+            if sell - buy > profit:
+                profit = sell - buy
+    return profit
+
+prices = [7,6,4,3,1,10]
+print(maxProfit(prices))
