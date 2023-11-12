@@ -46,3 +46,21 @@ def maxProfit(prices):
 
 prices = [7,6,4,3,1,10]
 print(maxProfit(prices))
+
+### OPTIMIZED ###
+
+def maxProfitOptimized(prices):
+    i = 0
+    j = 1
+    maxProfit = 0
+    while j < len(prices):
+        currentProfit = prices[j] - prices[i]
+        if prices[i] < prices[j]: # we are making profit
+            if currentProfit > maxProfit:
+                maxProfit = currentProfit
+        else:
+            i = j
+        j += 1
+    return maxProfit
+
+print(maxProfitOptimized(prices))
