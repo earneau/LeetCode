@@ -37,35 +37,13 @@
 ############### EXERCISE ###############
 ########################################
 
-
-## this solution doesnt work yet
-
 def bestTimeII(prices):
-    left = 0
-    right = 1
     profit = 0
-    while right < len(prices):
-        currentProfit = prices[right] - prices[left]
-        if (prices[left] < prices[right]):
-            print(right)
-            if (prices[right + 1] > prices[right]):
-                if (prices[right + 1] == len(prices)):
-                    nextProfit = prices[right + 1] - prices[left]
-                    if (nextProfit > currentProfit):
-                        profit += nextProfit
-                    else:
-                        profit += currentProfit
-                    return profit
-                right += 1
-            else:
-                profit += currentProfit
-                print("profit", profit)
-                print("we have left =", left, " and right = ", right)
-                left = right
-                right += 1
-        else:
-            left = right
-            right += 1
+    l = len(prices)
+    for i in range(1, l):       # comparing to the previous iteration allows the function to not go over the limited length of the array
+        if(prices[i] > prices[i - 1]):
+            profit =  profit + (prices[i] - prices[i - 1])
+
     return profit
 
 
