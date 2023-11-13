@@ -36,3 +36,38 @@
 
 ############### EXERCISE ###############
 ########################################
+
+
+## this solution doesnt work yet
+
+def bestTimeII(prices):
+    left = 0
+    right = 1
+    profit = 0
+    while right < len(prices):
+        currentProfit = prices[right] - prices[left]
+        if (prices[left] < prices[right]):
+            print(right)
+            if (prices[right + 1] > prices[right]):
+                if (prices[right + 1] == len(prices)):
+                    nextProfit = prices[right + 1] - prices[left]
+                    if (nextProfit > currentProfit):
+                        profit += nextProfit
+                    else:
+                        profit += currentProfit
+                    return profit
+                right += 1
+            else:
+                profit += currentProfit
+                print("profit", profit)
+                print("we have left =", left, " and right = ", right)
+                left = right
+                right += 1
+        else:
+            left = right
+            right += 1
+    return profit
+
+
+prices = [6,1,3,2,4,7]
+print(bestTimeII(prices))
