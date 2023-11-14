@@ -32,3 +32,18 @@
 
 ############### EXERCISE ###############
 ########################################
+
+# using the split function allows us to get a list of all the words in their natural order, excluding all the spaces
+# we can then pick up the last words of our newly found split list and return its length
+
+def lengthOfLastWord(s):
+    """
+    :type s: str
+    :rtype: int
+    """
+    split = s.split()
+    l = len(split)
+    return len(split[l-1])
+
+s = "   fly me   to   the moon  "
+print(lengthOfLastWord(s))
