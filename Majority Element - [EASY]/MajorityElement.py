@@ -29,22 +29,16 @@
 ############### EXERCISE ###############
 ########################################
 
-# this solution seems to work on my IDE but isnt validated on Leetcode
+# the idea is that once sorted, the majority element of the array will always be at n/2 indice
 
 def majorityElement(nums):
     """
     :type nums: List[int]
     :rtype: int
     """
+    nums.sort()
     l = len(nums)
-    for i in range (0, l):
-        cpt = 1
-        for j in range (i + 1,l):
-            print(nums[j])
-            if nums[i] == nums[j]:
-                cpt += 1
-            if cpt >= l/2:
-                return nums[i]
+    return nums[l/2]
             
 nums = [2,3,2,3,4,3]
 result = majorityElement(nums)
