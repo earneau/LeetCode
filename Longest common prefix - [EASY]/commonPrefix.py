@@ -27,3 +27,28 @@
 ############### EXERCISE ###############
 ########################################
 
+# this seems to work but isnt validated by leetwork
+# test doesnt pass for strings such as ["",""] 
+
+def longestCommonPrefix(strs):
+    """
+    :type strs: List[str]
+    :rtype: str
+    """
+    stop = False
+    i = 0
+    prefix = ""
+
+    if len(strs) == 1:  # if there's only one word the common prefix is the whole word
+        return strs[0]
+    
+    while stop == False:
+        for word in strs:
+            if word[:i] != prefix: 
+                stop == True
+                return prefix[:i-1] # this prefix doesnt work so the good one was the last one (hence [:i-1])
+        i += 1
+        prefix = strs[0][:i]
+
+strs = ["flower","flow","flight"]
+print(longestCommonPrefix(strs))
