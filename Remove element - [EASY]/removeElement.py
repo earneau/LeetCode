@@ -51,3 +51,18 @@
 ############### EXERCISE ###############
 ########################################
 
+def removeElement(nums,val):
+    cpt = 0
+    l = len(nums)
+
+    for i in range(0,l):
+        if nums[i] == val:
+            nums[i] = None
+            cpt += 1
+
+    nums.sort(key=lambda e: (e is None, e))
+    print(nums)
+    return l - cpt
+
+nums = [3,2,2,3]
+print(removeElement(nums,2))
