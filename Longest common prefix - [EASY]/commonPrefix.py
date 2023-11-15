@@ -35,20 +35,19 @@ def longestCommonPrefix(strs):
     :type strs: List[str]
     :rtype: str
     """
-    stop = False
-    i = 0
-    prefix = ""
 
-    if len(strs) == 1:  # if there's only one word the common prefix is the whole word
-        return strs[0]
+    if not strs:
+            return ""
     
-    while stop == False:
-        for word in strs:
-            if word[:i] != prefix: 
-                stop == True
-                return prefix[:i-1] # this prefix doesnt work so the good one was the last one (hence [:i-1])
-        i += 1
-        prefix = strs[0][:i]
+    prefix = strs[0]
+
+    for word in strs[1:]:
+        while word.find(prefix) != 0:       # finds the first occurence of the prefix, returns -1 if the value isnt found
+            prefix = prefix[:-1]
+            if not prefix:
+                return ""
+            
+    return prefix
 
 strs = ["flower","flow","flight"]
 print(longestCommonPrefix(strs))
