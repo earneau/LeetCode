@@ -46,3 +46,19 @@
 
 ############### EXERCISE ###############
 ########################################
+
+def removeDuplicate(nums):
+    l = len(nums)
+    i = l - 2
+    cpt = 0
+    while i >= 0:
+        if nums[i+1] == nums[i]:
+            nums[i+1] = None
+            cpt += 1
+        i -= 1
+    nums.sort(key=lambda e: (e is None, e))
+    print(nums)
+    return l - cpt
+
+nums = [1,1,1,1,2,2,3,3,3,4,5,5]
+removeDuplicate(nums)
