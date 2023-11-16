@@ -27,3 +27,14 @@
 ############### EXERCISE ###############
 ########################################
 
+def canJump(nums):
+    last = len(nums) - 1
+    i = len(nums) - 2
+
+    while i >= 0:
+        if i + nums[i] >= last:
+            last = i
+        i -= 1
+    
+    # if we get to 0 then we can reach the end so we return True
+    return last == 0 
