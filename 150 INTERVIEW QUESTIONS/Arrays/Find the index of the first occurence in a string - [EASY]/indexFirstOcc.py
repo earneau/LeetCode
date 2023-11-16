@@ -25,3 +25,19 @@
 
 ############### EXERCISE ###############
 ########################################
+
+def indexFirstOcc(haystack, needle):
+    ln = len(needle)
+    lh = len(haystack)
+
+    for i in range (0,lh):
+        current_word = haystack[i:ln]
+        if current_word == needle:
+            return i
+        ln += 1
+
+    return -1
+
+haystack = "bddfjdogkskk"
+needle = "dog"
+print(indexFirstOcc(haystack,needle))
