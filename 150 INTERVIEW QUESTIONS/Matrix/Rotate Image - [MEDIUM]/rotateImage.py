@@ -8,25 +8,9 @@
 ############### EXERCISE ###############
 ########################################
 
-import numpy as np
-
 def rotate(matrix):
-    n = len(matrix[0])
-    matrix = np.array(matrix)
-
-    for i in range(0,n):
-        top = matrix[i][i:n-i]
-        bottom = matrix[n-i-1][i:n-i]
-        left = matrix[:,i][i:n-i]
-        right = matrix[:,n-i-1][i:n-i]
-
-        print("top: ",top)
-        print("bottom: ",bottom)
-        print("left: ",left[::-1])
-        print("right: ",right[::-1])
-        matrix[:,n-i-1][i:n-i] = top
-        matrix[n-i-1][i:n-i] = right[::-1]
-        matrix[:,i][i:n-i] = bottom
-        matrix[i][i:n-i] = left[::-1]
-        print(matrix)
-        print("\n")
+    n = len(matrix)
+    for i in range(n/2):
+        for j in range(n-n/2):
+            matrix[i][j], matrix[~j][i], matrix[~i][~j], matrix[j][~i] = \
+                        matrix[~j][i], matrix[~i][~j], matrix[j][~i], matrix[i][j]
