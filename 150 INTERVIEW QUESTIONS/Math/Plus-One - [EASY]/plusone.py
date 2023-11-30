@@ -8,3 +8,22 @@
 ############### EXERCISE ###############
 ########################################
 
+def plusOne(self, digits):
+    i = len(digits) - 1
+    
+    if digits[i] != 9:
+        digits[i] += 1
+        return digits
+
+    while i >= 0:
+        if digits[i] == 9:
+            digits[i] = 0
+            i -= 1
+        else:
+            digits[i] += 1
+            return digits
+    
+    if digits[0] == 0:
+        digits.insert(0, 1)
+    
+    return digits
