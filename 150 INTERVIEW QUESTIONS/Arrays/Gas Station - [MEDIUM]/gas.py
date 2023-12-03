@@ -12,40 +12,16 @@
 ########################################
 
 def canCompleteCircuit(self, gas, cost):
-    """
-    :type gas: List[int]
-    :type cost: List[int]
-    :rtype: int
-    """
-    tank = 0
     l = len(gas)
-
-    if sum(gas) < sum(cost):
-        return -1 
-        
-    for start in range(0,l):
-        if gas[start] < cost[start]:
-            continue
-
-        tank += gas[start]
-        i = l - 1
-        tip = start
-        
-        
-        while i >= 0:
-            tank -= cost[tip]
-            if tank >= 0:
-                tip += 1
-                if tip >= l:
-                    tip = 0
-                tank += gas[tip]
-            else:
-                tank = 0
-                break
-            i -= 1
-        
-        if tip == start:
-            return start
-
-    return -1
-
+    
+    ptrR = l - 1
+    ptrL = 0
+    tank = 0
+    while ptrL <= ptrR:
+        if tank < 0:
+            tank += gas[ptrR] - cost[ptrR]
+            ptrR -= 1
+        else:
+            tank += gas[ptrL] - cost[ptrL]
+            ptrL += 1
+    return ptrL % l if tank >= 0 else -1
