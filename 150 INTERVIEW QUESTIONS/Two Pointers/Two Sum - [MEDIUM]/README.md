@@ -1,1 +1,0 @@
-Link to the exercise : https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/?envType=study-plan-v2&envId=top-interview-150
