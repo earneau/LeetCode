@@ -1,28 +1,29 @@
-# Link to the exercise : https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/?envType=study-plan-v2&envId=top-interview-150
+# Link to the exercise : https://leetcode.com/problems/two-sum/description/?envType=study-plan-v2&envId=top-interview-150
 
 ############ INSTRUCTIONS ##############
 ########################################
 
-#Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 < numbers.length.
-
-#Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
-
-#The tests are generated such that there is exactly one solution. You may not use the same element twice.
-
-#Your solution must use only constant extra space.
+# Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+# You may assume that each input would have exactly one solution, and you may not use the same element twice.
+# You can return the answer in any order.
 
 ############### EXERCISE ###############
 ########################################
 
-def twoSum(self, numbers, target):
-    left, right = 0, len(numbers) - 1
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        first = 0
+        second = 0
 
-    while left < right:
-        current_sum = numbers[left] + numbers[right]
-
-        if current_sum == target:
-            return [left + 1, right + 1]
-        elif current_sum < target:
-            left += 1
-        else:
-            right -= 1
+        for i in range(0,len(nums)):
+            for j in range(i+1,len(nums)):
+                if nums[i] + nums[j] == target:
+                    first = i
+                    second = j
+        
+        return [first,second]
